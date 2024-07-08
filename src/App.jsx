@@ -3,12 +3,16 @@ import { createBrowserRouter, Outlet } from 'react-router-dom';
 import Header from './components/Header';
 import Demo from './components/Demo';
 import Body from './components/Body';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 function App() {
   return (
     <div className="w-screen h-screen ">
-      <Header />
-      <Outlet />
+      <Provider store={store} >        
+        <Header />
+        <Outlet />
+      </Provider>
     </div>
   );
 }
