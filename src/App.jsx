@@ -5,6 +5,7 @@ import Demo from './components/Demo';
 import Body from './components/Body';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { lazy, Suspense } from 'react';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
   );
 }
 
+const DemoComponent = lazy(() => import("./components/Demo.jsx"));
+
 export const browserRouter = createBrowserRouter([
   {
     path:"/",
@@ -28,7 +31,8 @@ export const browserRouter = createBrowserRouter([
       },
       {
         path: "/demo",
-        element: <Demo />
+        element: <Suspense fallback={<Body />} ><DemoComponent /></Suspense>
+        
       }
     ]
   }
