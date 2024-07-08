@@ -1,10 +1,16 @@
 import './App.css';
+
+//Components
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 import Header from './components/Header';
-import Demo from './components/Demo';
 import Body from './components/Body';
+import Login from './components/Login.jsx';
+
+// redux
 import { Provider } from 'react-redux';
 import store from './redux/store';
+
+// lazy loading
 import { lazy, Suspense } from 'react';
 
 function App() {
@@ -35,6 +41,10 @@ export const browserRouter = createBrowserRouter([
         
       }
     ]
+  },
+  {
+    path: "/login",
+    element: <Login />
   }
 ])
 
