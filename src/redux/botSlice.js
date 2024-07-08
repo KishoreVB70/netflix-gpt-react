@@ -2,9 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const bot = createSlice({
     name: "bot",
-    initialState: {
-
-    },
+    initialState: [],
     reducers: {
         function1: (state, action) => {state.push(action)}
     }
