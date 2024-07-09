@@ -1,6 +1,6 @@
 export const validateInput = (email, password, name) => {
     const isEmailValid = /^[a-zA-Z0-9_.±]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/.test(email);
-    const isPasswordValid = /^[a-z]{4,20}$/.test(password);
+    const isPasswordValid = /^[a-z]{6,20}$/.test(password);
     let isNameValid = true;
 
     if(name.current) {
