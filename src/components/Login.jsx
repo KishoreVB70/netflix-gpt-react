@@ -1,16 +1,23 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import LoginHeader from './LoginHeader'
 import { validateInput } from '../utils/validateInput';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../utils/firebase';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../redux/user';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   //Hooks
+  const userRedux = useSelector(s => s.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(userRedux) {
+      navigate("/browse");
+    }
+  })
 
   //State
   const emailValue = useRef(null);

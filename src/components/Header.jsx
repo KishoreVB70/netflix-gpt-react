@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeUser } from '../redux/user'
 import { signOut } from 'firebase/auth'
@@ -9,6 +9,13 @@ const Header = () => {
   const user = useSelector(s => s.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  })
+
 
   const handleSignOut = () => {
     signOut(auth).then(() => {
