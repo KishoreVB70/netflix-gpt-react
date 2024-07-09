@@ -30,6 +30,17 @@ const Login = () => {
     setValidationErrorString(validationResult);
 
     if(validationResult) return;
+    const setStuffUp = () => {
+      const { displayName, email, uid, photoURL } = auth.currentUser;
+  
+      const userObject = { displayName, email, uid, photoURL };
+
+      // Set user into store
+      dispatch(setUser(userObject));
+
+      // Change page
+      navigate('/browse');
+    }
 
     const handleSignUpPromise = () => {
       createUserWithEmailAndPassword(auth, emailValue.current.value, password.current.value)
@@ -63,16 +74,8 @@ const Login = () => {
           displayName: name.current.value,
           photoURL: "https://www.iconpacks.net/icons/5/free-icon-gamer-boy-15169.png"
         });
+        setStuffUp();
   
-        const { displayName, email, uid, photoURL } = auth.currentUser;
-  
-        const userObject = { displayName, email, uid, photoURL };
-  
-        // Set user into store
-        dispatch(setUser(userObject));
-  
-        // Change page
-        navigate('/browse');
       } catch (error) {
         console.log('Error during sign up:', error.message);
       }
@@ -83,17 +86,7 @@ const Login = () => {
         //Sign in user
         await signInWithEmailAndPassword(auth, emailValue.current.value, password.current.value);
 
-        const {displayName, email, uid, photoURL} = auth.currentUser;
-
-        const userObject = {displayName, email, uid, photoURL}
-
-        console.log(userObject);
-
-        // Set user into store
-        dispatch(setUser(userObject));
-
-        // Change page
-        navigate("/browse");
+        setStuffUp();
       } catch (error) {
         setValidationErrorString(error.message);
       }
