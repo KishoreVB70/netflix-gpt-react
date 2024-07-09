@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import LoginHeader from './LoginHeader'
 import { validateInput } from '../utils/validateInput';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../utils/firebase';
 
 const Login = () => {
   const [formState, setFormState] = useState("Sign In");
@@ -8,7 +10,6 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
-
 
   const handleFormToggle = () => {
     setFormState(s => s==="Sign In"?"Sign Up":"Sign In");
@@ -18,8 +19,30 @@ const Login = () => {
     const validationResult = validateInput(email.current.value, password.current.value, name);
     setValidationErrorString(validationResult);
 
-    if(validationResult === null) {
-      console.log("Motosias");
+    if(validationResult) return;
+
+    const signUpUser = async() => {
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email.current.value, password.current.value);
+        console.log(userCredential.user);
+      } catch (error) {
+        setValidationErrorString(error.message);
+      }
+    }
+
+    const signInUser = async() => {
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email.current.value, password.current.value);
+        console.log(userCredential.user);
+      } catch (error) {
+        setValidationErrorString(error.message);
+      }
+    }
+
+    if(formState === "Sign Up") {
+      signUpUser();
+    } else {
+      signInUser();
     }
   }
 
