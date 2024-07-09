@@ -1,22 +1,25 @@
 import React, { useRef, useState } from 'react'
 import LoginHeader from './LoginHeader'
 import { validateInput } from '../utils/validateInput';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../utils/firebase';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/user';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [formState, setFormState] = useState("Sign In");
-  const [validationErrorString, setValidationErrorString] = useState(null);
+  //Hooks
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  //State
   const emailValue = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
-  const dispatch = useDispatch();
+  const [formState, setFormState] = useState("Sign In");
+  const [validationErrorString, setValidationErrorString] = useState(null);
 
-  const userFromRedux = useSelector(store => store.user);
 
-  console.log(userFromRedux);
 
   const handleFormToggle = () => {
     setFormState(s => s==="Sign In"?"Sign Up":"Sign In");
@@ -30,21 +33,49 @@ const Login = () => {
 
     const signUpUser = async() => {
       try {
-        const userCredential = await createUserWithEmailAndPassword(auth, emailValue.current.value, password.current.value);
-        console.log(userCredential.user);
-        dispatch(setUser(userCredential.user));
+        // Create user
+        await createUserWithEmailAndPassword(auth, emailValue.current.value, password.current.value);
+
+        //Update user
+        await updateProfile(auth.currentUser, {
+          displayName: name.current.value,
+          photoURL: "https://www.iconpacks.net/icons/5/free-icon-gamer-boy-15169.png"
+        })
+
+        const {displayName, email, uid, photoURL} = auth.currentUser;
+
+        const userObject = {displayName, email, uid, photoURL}
+
+        console.log(userObject);
+
+        // Set user into store
+        dispatch(setUser(userObject));
+
+        // Change page
+        navigate("/browse");
       } catch (error) {
         setValidationErrorString(error.message);
+        console.log(error);
       }
+
     }
 
     const signInUser = async() => {
       try {
-        const userCredential = await signInWithEmailAndPassword(auth, emailValue.current.value, password.current.value);
-        console.log(userCredential.user);
-        const {displayName, email, emailVerified, uid} = userCredential.user;
-        const userObject = {displayName, email, emailVerified, uid}
+        //Sign in user
+        await signInWithEmailAndPassword(auth, emailValue.current.value, password.current.value);
+
+        const {displayName, email, uid, photoURL} = auth.currentUser;
+
+        const userObject = {displayName, email, uid, photoURL}
+
+        console.log(userObject);
+
+        // Set user into store
         dispatch(setUser(userObject));
+
+        // Change page
+        navigate("/browse");
       } catch (error) {
         setValidationErrorString(error.message);
       }
@@ -71,7 +102,7 @@ const Login = () => {
 
             <h1 className='z-50 text-white text-[2rem] font-bold mx-10 mt-10'>{formState}</h1>
 
-            <form onSubmit={e => e.preventDefault()} className=" flex flex-col z-50  top-auto left-auto mx-10 mt-5" > 
+            <div className=" flex flex-col z-50  top-auto left-auto mx-10 mt-5" > 
               {formState === "Sign Up" && 
                 <input ref={name} className={`h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Name not valid"?"border-red-500":"border-gray-500"} `} placeholder='Name' type="text" />
               }
@@ -79,7 +110,7 @@ const Login = () => {
               <input className={`h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Password not valid"?"border-red-500":"border-gray-500"}`} ref={password} placeholder='password' type="password" />
               <p className='text-red-500 ml-2 z-50 font-semibold text-lg' >{validationErrorString}</p>
               <button onClick={handleFormSubmit} className='z-50 rounded-md hover:bg-red-700 text-white bg-red-600 h-10 m-2 font-semibold' >{formState}</button>
-            </form>
+            </div>
 
             {formState === "Sign In" &&                 
               <div className='m-12 flex'>
