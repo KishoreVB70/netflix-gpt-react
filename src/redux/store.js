@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import bot from "./botSlice";
+import user from "./user";
 
 const store = configureStore({
     reducer: {
-        bot: bot
+        user: user
     }
 })
 

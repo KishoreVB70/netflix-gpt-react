@@ -3,28 +3,36 @@ import LoginHeader from './LoginHeader'
 import { validateInput } from '../utils/validateInput';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../utils/firebase';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser } from '../redux/user';
 
 const Login = () => {
   const [formState, setFormState] = useState("Sign In");
   const [validationErrorString, setValidationErrorString] = useState(null);
-  const email = useRef(null);
+  const emailValue = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
+  const dispatch = useDispatch();
+
+  const userFromRedux = useSelector(store => store.user);
+
+  console.log(userFromRedux);
 
   const handleFormToggle = () => {
     setFormState(s => s==="Sign In"?"Sign Up":"Sign In");
   }
 
   const handleFormSubmit = () => {
-    const validationResult = validateInput(email.current.value, password.current.value, name);
+    const validationResult = validateInput(emailValue.current.value, password.current.value, name);
     setValidationErrorString(validationResult);
 
     if(validationResult) return;
 
     const signUpUser = async() => {
       try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email.current.value, password.current.value);
+        const userCredential = await createUserWithEmailAndPassword(auth, emailValue.current.value, password.current.value);
         console.log(userCredential.user);
+        dispatch(setUser(userCredential.user));
       } catch (error) {
         setValidationErrorString(error.message);
       }
@@ -32,8 +40,11 @@ const Login = () => {
 
     const signInUser = async() => {
       try {
-        const userCredential = await signInWithEmailAndPassword(auth, email.current.value, password.current.value);
+        const userCredential = await signInWithEmailAndPassword(auth, emailValue.current.value, password.current.value);
         console.log(userCredential.user);
+        const {displayName, email, emailVerified, uid} = userCredential.user;
+        const userObject = {displayName, email, emailVerified, uid}
+        dispatch(setUser(userObject));
       } catch (error) {
         setValidationErrorString(error.message);
       }
@@ -64,7 +75,7 @@ const Login = () => {
               {formState === "Sign Up" && 
                 <input ref={name} className={`h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Name not valid"?"border-red-500":"border-gray-500"} `} placeholder='Name' type="text" />
               }
-              <input  className={`border h-[3.3 rem] text-white p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Email not valid"?"border-red-500":"border-gray-500"}`} ref={email} placeholder='Email' type="text" />
+              <input  className={`border h-[3.3 rem] text-white p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Email not valid"?"border-red-500":"border-gray-500"}`} ref={emailValue} placeholder='Email' type="text" />
               <input className={`h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Password not valid"?"border-red-500":"border-gray-500"}`} ref={password} placeholder='password' type="password" />
               <p className='text-red-500 ml-2 z-50 font-semibold text-lg' >{validationErrorString}</p>
               <button onClick={handleFormSubmit} className='z-50 rounded-md hover:bg-red-700 text-white bg-red-600 h-10 m-2 font-semibold' >{formState}</button>
