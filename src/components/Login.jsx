@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LoginHeader from './LoginHeader'
 
 const Login = () => {
+  const [formState, setFormState] = useState("Sign In");
+  const handleFormToggle = () => {
+    setFormState(s => s==="Sign In"?"Sign Up":"Sign In");
+  }
+
+  const handleFormSubmit = () => {
+    console.log("Form submitted");
+  }
+
   return (
     <div className='relative w-full h-full' >
         <LoginHeader />
@@ -14,14 +23,30 @@ const Login = () => {
                 <div className='absolute w-full h-full opacity-70 bg-black' >
                 </div>
 
-                <h1 className='z-50 text-white text-[2rem] font-bold mx-10 mt-10'>Sign In</h1>
+                <h1 className='z-50 text-white text-[2rem] font-bold mx-10 mt-10'>{formState}</h1>
 
-                <form className=" flex flex-col z-50  top-auto left-auto mx-10 mt-5"  action="">
-                    <input  className='border h-[3.3 rem] text-white border-gray-400 p-4 m-2 bg-black' placeholder='Email' type="text" />
-                    <input className='h-[3.3 rem] border text-white border-gray-400     p-4 m-2 bg-black' placeholder='password' type="password" />
-                    <button className='hover:bg-red-700 text-white bg-red-600 h-9 m-2 font-semibold' >Sign In</button>
+                <form className=" flex flex-col z-50  top-auto left-auto mx-10 mt-5"  action={handleFormSubmit}>
+                  {formState === "Sign Up" && 
+                    <input className='h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ' placeholder='Name' type="text" />
+                  }
+                  <input  className='border h-[3.3 rem] text-white border-gray-500 p-4 m-2 bg-gray-900 bg-opacity-50' placeholder='Email' type="text" />
+                  <input className='h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ' placeholder='password' type="password" />
+                  <button className='rounded-md hover:bg-red-700 text-white bg-red-600 h-10 m-2 font-semibold' >{formState}</button>
                 </form>
-                <p className='text-white z-50 m-12'>New to netflix? Sign up now</p>
+
+                {formState === "Sign In" &&                 
+                  <div className='m-12 flex'>
+                    <span className='text-white z-50 mr-1'>New to Netflix?</span>
+                    <span onClick={handleFormToggle} className='text-white z-50 hover:cursor-pointer font-[640] hover:underline'>Sign up now</span>
+                  </div>
+                }
+
+                {formState === "Sign Up" &&                 
+                  <div className='m-12 flex'>
+                    <span className='text-white z-50 mr-1'>Already have an account?</span>
+                    <span onClick={handleFormToggle} className='text-white z-50 hover:cursor-pointer font-[640] hover:underline'>Sign in</span>
+                  </div>
+                }
             </div>
         </div>
 
