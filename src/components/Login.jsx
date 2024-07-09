@@ -31,34 +31,52 @@ const Login = () => {
 
     if(validationResult) return;
 
-    const signUpUser = async() => {
-      try {
-        // Create user
-        await createUserWithEmailAndPassword(auth, emailValue.current.value, password.current.value);
-
-        //Update user
-        await updateProfile(auth.currentUser, {
+    const handleSignUpPromise = () => {
+      createUserWithEmailAndPassword(auth, emailValue.current.value, password.current.value)
+      .then(() => {
+        updateProfile(auth.currentUser, {
           displayName: name.current.value,
           photoURL: "https://www.iconpacks.net/icons/5/free-icon-gamer-boy-15169.png"
         })
+        .then(() => {
+          const {displayName, email, uid, photoURL} = auth.currentUser;
 
-        const {displayName, email, uid, photoURL} = auth.currentUser;
+          const userObject = {displayName, email, uid, photoURL}
+  
+          console.log(userObject);
+  
+          // Set user into store
+          dispatch(setUser(userObject));
+          navigate("/browse");
+        })
+      })
+      .catch(error => console.log(error));
+    }
 
-        const userObject = {displayName, email, uid, photoURL}
-
-        console.log(userObject);
-
+    const signUpUser = async () => {
+      try {
+        // Create user
+        await createUserWithEmailAndPassword(auth, emailValue.current.value, password.current.value);
+  
+        // Update user profile
+        await updateProfile(auth.currentUser, {
+          displayName: name.current.value,
+          photoURL: "https://www.iconpacks.net/icons/5/free-icon-gamer-boy-15169.png"
+        });
+  
+        const { displayName, email, uid, photoURL } = auth.currentUser;
+  
+        const userObject = { displayName, email, uid, photoURL };
+  
         // Set user into store
         dispatch(setUser(userObject));
-
+  
         // Change page
-        navigate("/browse");
+        navigate('/browse');
       } catch (error) {
-        setValidationErrorString(error.message);
-        console.log(error);
+        console.log('Error during sign up:', error.message);
       }
-
-    }
+    };
 
     const signInUser = async() => {
       try {
