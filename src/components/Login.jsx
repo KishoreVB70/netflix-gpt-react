@@ -1,8 +1,10 @@
 import React, { useRef, useState } from 'react'
 import LoginHeader from './LoginHeader'
+import { validateInput } from '../utils/validateInput';
 
 const Login = () => {
   const [formState, setFormState] = useState("Sign In");
+  const [validationErrorString, setValidationErrorString] = useState(null);
   const email = useRef(null);
   const password = useRef(null);
 
@@ -12,9 +14,12 @@ const Login = () => {
   }
 
   const handleFormSubmit = () => {
-    console.log("Form submitted");
-    console.log(email.current.value);
-    console.log(password.current.value);
+    const validationResult = validateInput(email.current.value, password.current.value);
+    setValidationErrorString(validationResult);
+
+    if(validationResult === null) {
+      console.log("Motosias");
+    }
   }
 
   return (
@@ -31,12 +36,13 @@ const Login = () => {
 
                 <h1 className='z-50 text-white text-[2rem] font-bold mx-10 mt-10'>{formState}</h1>
 
-                <form onSubmit={e => e.preventDefault()} className=" flex flex-col z-50  top-auto left-auto mx-10 mt-5" >
+                <form onSubmit={e => e.preventDefault()} className=" flex flex-col z-50  top-auto left-auto mx-10 mt-5" > 
                   {formState === "Sign Up" && 
                     <input className='h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ' placeholder='Name' type="text" />
                   }
-                  <input  className='border h-[3.3 rem] text-white border-gray-500 p-4 m-2 bg-gray-900 bg-opacity-50' ref={email} placeholder='Email' type="text" />
-                  <input className='h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50' ref={password} placeholder='password' type="password" />
+                  <input  className={`border h-[3.3 rem] text-white p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Email not valid"?"border-red-500":"border-gray-500"}`} ref={email} placeholder='Email' type="text" />
+                  <input className={`h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Password not valid"?"border-red-500":"border-gray-500"}`} ref={password} placeholder='password' type="password" />
+                  <p className='text-red-500 ml-2 z-50 font-semibold text-lg' >{validationErrorString}</p>
                   <button onClick={handleFormSubmit} className='z-50 rounded-md hover:bg-red-700 text-white bg-red-600 h-10 m-2 font-semibold' >{formState}</button>
                 </form>
 
