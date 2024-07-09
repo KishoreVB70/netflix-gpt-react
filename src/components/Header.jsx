@@ -10,13 +10,6 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user) {
-      navigate("/");
-    }
-  })
-
-
   const handleSignOut = () => {
     signOut(auth).then(() => {
       dispatch(removeUser());
@@ -25,6 +18,12 @@ const Header = () => {
       console.log(error);
     });
   }
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/");
+    }
+  })
 
   return (
     <div>
