@@ -17,7 +17,6 @@ function App() {
   return (
     <div className="w-screen h-screen ">
       <Provider store={store} >        
-        <Header />
         <Outlet />
       </Provider>
     </div>
@@ -33,7 +32,7 @@ export const browserRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />
+        element: <Login />
       },
       {
         path: "/demo",
@@ -43,8 +42,8 @@ export const browserRouter = createBrowserRouter([
     ]
   },
   {
-    path: "/login",
-    element: <Login />
+    path: "/browse",
+    element: <> <Header /> <Body /> </>
   }
 ])
 
