@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import user from "./user";
+import movies from "./movies";
 
 const store = configureStore({
     reducer: {
-        user: user
+        user: user,
+        movies: movies
     }
 })
 
