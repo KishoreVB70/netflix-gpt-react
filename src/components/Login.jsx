@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import LoginHeader from './LoginHeader'
 
 const Login = () => {
   const [formState, setFormState] = useState("Sign In");
+  const email = useRef(null);
+  const password = useRef(null);
+
+
   const handleFormToggle = () => {
     setFormState(s => s==="Sign In"?"Sign Up":"Sign In");
   }
 
   const handleFormSubmit = () => {
     console.log("Form submitted");
+    console.log(email.current.value);
+    console.log(password.current.value);
   }
 
   return (
@@ -25,13 +31,13 @@ const Login = () => {
 
                 <h1 className='z-50 text-white text-[2rem] font-bold mx-10 mt-10'>{formState}</h1>
 
-                <form className=" flex flex-col z-50  top-auto left-auto mx-10 mt-5"  action={handleFormSubmit}>
+                <form onSubmit={e => e.preventDefault()} className=" flex flex-col z-50  top-auto left-auto mx-10 mt-5" >
                   {formState === "Sign Up" && 
                     <input className='h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ' placeholder='Name' type="text" />
                   }
-                  <input  className='border h-[3.3 rem] text-white border-gray-500 p-4 m-2 bg-gray-900 bg-opacity-50' placeholder='Email' type="text" />
-                  <input className='h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ' placeholder='password' type="password" />
-                  <button className='rounded-md hover:bg-red-700 text-white bg-red-600 h-10 m-2 font-semibold' >{formState}</button>
+                  <input  className='border h-[3.3 rem] text-white border-gray-500 p-4 m-2 bg-gray-900 bg-opacity-50' ref={email} placeholder='Email' type="text" />
+                  <input className='h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50' ref={password} placeholder='password' type="password" />
+                  <button onClick={handleFormSubmit} className='z-50 rounded-md hover:bg-red-700 text-white bg-red-600 h-10 m-2 font-semibold' >{formState}</button>
                 </form>
 
                 {formState === "Sign In" &&                 
