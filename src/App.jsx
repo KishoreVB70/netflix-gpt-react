@@ -51,16 +51,16 @@ export const browserRouter = createBrowserRouter([
         element: <Login />
       },
       {
+        path: "/browse",
+        element: <> <Header /> <Body /> </>
+      },
+      {
         path: "/demo",
         element: <Suspense fallback={<Body />} ><DemoComponent /></Suspense>
         
       }
     ]
   },
-  {
-    path: "/browse",
-    element: <> <Header /> <Body /> </>
-  }
 ])
 
 
