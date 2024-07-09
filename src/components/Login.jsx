@@ -31,36 +31,36 @@ const Login = () => {
         </div>
 
         <div className='absolute h-screen w-screen flex justify-center items-center' >
-            <div className='relative flex flex-col w-[22%] h-[78%]'>
-                <div className='absolute w-full h-full opacity-70 bg-black' >
-                </div>
-
-                <h1 className='z-50 text-white text-[2rem] font-bold mx-10 mt-10'>{formState}</h1>
-
-                <form onSubmit={e => e.preventDefault()} className=" flex flex-col z-50  top-auto left-auto mx-10 mt-5" > 
-                  {formState === "Sign Up" && 
-                    <input ref={name} className={`h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Name not valid"?"border-red-500":"border-gray-500"} `} placeholder='Name' type="text" />
-                  }
-                  <input  className={`border h-[3.3 rem] text-white p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Email not valid"?"border-red-500":"border-gray-500"}`} ref={email} placeholder='Email' type="text" />
-                  <input className={`h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Password not valid"?"border-red-500":"border-gray-500"}`} ref={password} placeholder='password' type="password" />
-                  <p className='text-red-500 ml-2 z-50 font-semibold text-lg' >{validationErrorString}</p>
-                  <button onClick={handleFormSubmit} className='z-50 rounded-md hover:bg-red-700 text-white bg-red-600 h-10 m-2 font-semibold' >{formState}</button>
-                </form>
-
-                {formState === "Sign In" &&                 
-                  <div className='m-12 flex'>
-                    <span className='text-white z-50 mr-1'>New to Netflix?</span>
-                    <span onClick={handleFormToggle} className='text-white z-50 hover:cursor-pointer font-[640] hover:underline'>Sign up now</span>
-                  </div>
-                }
-
-                {formState === "Sign Up" &&                 
-                  <div className='m-12 flex'>
-                    <span className='text-white z-50 mr-1'>Already have an account?</span>
-                    <span onClick={handleFormToggle} className='text-white z-50 hover:cursor-pointer font-[640] hover:underline'>Sign in</span>
-                  </div>
-                }
+          <div className='relative flex flex-col w-[22%] h-[78%]'>
+            <div className='absolute w-full h-full opacity-70 bg-black' >
             </div>
+
+            <h1 className='z-50 text-white text-[2rem] font-bold mx-10 mt-10'>{formState}</h1>
+
+            <form onSubmit={e => e.preventDefault()} className=" flex flex-col z-50  top-auto left-auto mx-10 mt-5" > 
+              {formState === "Sign Up" && 
+                <input ref={name} className={`h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Name not valid"?"border-red-500":"border-gray-500"} `} placeholder='Name' type="text" />
+              }
+              <input  className={`border h-[3.3 rem] text-white p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Email not valid"?"border-red-500":"border-gray-500"}`} ref={email} placeholder='Email' type="text" />
+              <input className={`h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Password not valid"?"border-red-500":"border-gray-500"}`} ref={password} placeholder='password' type="password" />
+              <p className='text-red-500 ml-2 z-50 font-semibold text-lg' >{validationErrorString}</p>
+              <button onClick={handleFormSubmit} className='z-50 rounded-md hover:bg-red-700 text-white bg-red-600 h-10 m-2 font-semibold' >{formState}</button>
+            </form>
+
+            {formState === "Sign In" &&                 
+              <div className='m-12 flex'>
+                <span className='text-white z-50 mr-1'>New to Netflix?</span>
+                <span onClick={handleFormToggle} className='text-white z-50 hover:cursor-pointer font-[640] hover:underline'>Sign up now</span>
+              </div>
+            }
+
+            {formState === "Sign Up" &&                 
+              <div className='m-12 flex'>
+                <span className='text-white z-50 mr-1'>Already have an account?</span>
+                <span onClick={handleFormToggle} className='text-white z-50 hover:cursor-pointer font-[640] hover:underline'>Sign in</span>
+              </div>
+            }
+          </div>
         </div>
 
     </div>
