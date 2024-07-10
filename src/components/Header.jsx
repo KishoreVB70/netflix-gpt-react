@@ -26,9 +26,9 @@ const Header = () => {
   })
 
   return (
-    <div>
+    <div >
       {user && 
-        <div>
+        <div className='flex flex-row'>
           <img src={user.photoURL} alt="user-icon" />
           <h1>{user.displayName}</h1>
           <button onClick={handleSignOut} className='p-2 m-2 border-black border' >Sign Out</button>
