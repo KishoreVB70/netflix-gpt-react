@@ -23,17 +23,22 @@ const Header = () => {
     if (!user) {
       navigate("/");
     }
-  })
+  },[])
+
+  if(!user) {
+    return
+  }
 
   return (
-    <div >
-      {user && 
-        <div className='flex flex-row'>
-          <img src={user.photoURL} alt="user-icon" />
-          <h1>{user.displayName}</h1>
-          <button onClick={handleSignOut} className='p-2 m-2 border-black border' >Sign Out</button>
-        </div>
-      }
+    <div className='flex flex-row w-screen h-[10%] bg-black items-center mb-2 p-2 justify-between'>
+      <div>
+        <h1 className='text-white'>Netflix</h1>
+      </div>
+      <div className='flex flex-row w-1/6 h-full items-center' >
+        <img className='h-[95%]' src={user.photoURL} alt="user-icon" />
+        <h1 className='text-white text-xl font-semibold' >{user.displayName}</h1>
+        <button onClick={handleSignOut} className=' txt-center w-24 h-1/2 p-2 m-2 text-white border-white border' >Sign Out</button>
+      </div>
     </div>
   )
 }
