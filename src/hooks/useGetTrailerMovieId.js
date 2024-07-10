@@ -8,10 +8,15 @@ const useGetTrailerMovieId = () => {
     const movies = useSelector(s => s.movies.nowStreaming);
 
     const fetchTrailerMovieDetails = async() => {
+      if(!movies) {
+        return;
+      }
+
       try{
         const trailerMovieId = movies[0].id
         const _data = await fetch(tmdbVideosApi+ "" +trailerMovieId+"/videos?", tmdbOptions)
         const data = await _data.json();
+        console.log(data.results);
         let trailers = data.results.filter(i => i.type==="Trailer" );
 
         if(!trailers.length) {
@@ -20,7 +25,7 @@ const useGetTrailerMovieId = () => {
 
         const trailer = !trailers.length?data.results[0]:trailers[0];
         console.log(trailer);
-        dispatch(addTrailerMovie(trailer.id));
+        dispatch(addTrailerMovie(trailer.key));
         
       }catch(error){
         console.log(error);
