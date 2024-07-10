@@ -1,18 +1,12 @@
 import React from 'react';
-import useGetTrailerMovieId from '../hooks/useGetTrailerMovieId';
 import { useSelector } from 'react-redux';
 
-
-
 const MovieTrailer = () => {
-    useGetTrailerMovieId();
     const trailerId = useSelector(s => s.movies.trailerMovieId);
 
-    if(!trailerId) {
+    if(!trailerId){
         return
     }
-
-    console.log(trailerId);
 
     return (
         <div>
