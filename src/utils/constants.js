@@ -14,3 +14,4 @@ export const tmdbOptions = {
 
 export const tmdbNowStreamingApi = "https://api.themoviedb.org/3/movie/now_playing?page=1"
 export const tmdbVideosApi = 'https://api.themoviedb.org/3/movie/';
+export const trailerNumber = 0;

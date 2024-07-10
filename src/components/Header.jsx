@@ -4,6 +4,7 @@ import { removeUser } from '../redux/user'
 import { signOut } from 'firebase/auth'
 import { auth } from '../utils/firebase'
 import { useNavigate } from 'react-router-dom'
+import { neflixUserIconURL, netflixLogoURL } from '../utils/constants'
 
 const Header = () => {
   const user = useSelector(s => s.user);
@@ -30,12 +31,12 @@ const Header = () => {
   }
 
   return (
-    <div className='flex flex-row w-screen h-[10%] bg-black items-center mb-2 p-2 justify-between'>
-      <div>
-        <h1 className='text-white'>Netflix</h1>
+    <div className='flex flex-row w-screen h-[10%] bg-transparent items-center mb-2 p-2 justify-between '>
+      <div className='ml-10 h-full w-1/6' >
+        <img className='h-full w-1/2  transform scale-150 ' src={netflixLogoURL} alt="netflix-logo" />
       </div>
       <div className='flex flex-row w-1/6 h-full items-center' >
-        <img className='h-[95%]' src={user.photoURL} alt="user-icon" />
+        <img className='h-[85%]' src={user.photoURL} alt="user-icon object-cover" />
         <h1 className='text-white text-xl font-semibold' >{user.displayName}</h1>
         <button onClick={handleSignOut} className=' txt-center w-24 h-1/2 p-2 m-2 text-white border-white border' >Sign Out</button>
       </div>

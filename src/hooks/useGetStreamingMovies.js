@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { tmdbNowStreamingApi, tmdbOptions, tmdbVideosApi} from '../utils/constants';
+import { tmdbNowStreamingApi, tmdbOptions, tmdbVideosApi, trailerNumber} from '../utils/constants';
 import { useDispatch, useSelector} from 'react-redux';
 import { addMovies, addTrailerMovie } from '../redux/movies';
 
@@ -24,7 +24,7 @@ const useGetStreamingMovies = () => {
             trailers = data.results.filter(i => i.type ==="Teaser");
           }
   
-          const trailer = !trailers.length?data.results[0]:trailers[0];
+          const trailer = !trailers.length?data.results[trailerNumber]:trailers[trailerNumber];
           console.log(trailer);
           dispatch(addTrailerMovie(trailer.key));
           
