@@ -1,12 +1,25 @@
 import React, { useRef } from 'react'
 import { lang } from '../utils/lang';
 import { useSelector } from 'react-redux';
+// import OpenAI from "openai";
 
 const GPTSearch = () => {
     const GPTSearchInput = useRef(null);
     const language = useSelector(s => s.config.lang);
-    const handleGPTSearch = () => {
-        const searchInput = GPTSearchInput.current.value
+    const OPEN_AI_API_KEY = process.env.OPEN_AI_API_KEY;
+    console.log(OPEN_AI_API_KEY);
+
+    // const openai = new OpenAI({apiKey: process.env.OPEN_AI_API_KEY});
+
+    const handleGPTSearch = async() => {
+        const searchInput = GPTSearchInput.current.value 
+        console.log(searchInput)
+        // const completion = await openai.chat.completions.create({
+        //     messages: [{ role: "user", content: `you are a movie recommendation assistant. For the query, provide 5 apt movie recommendation in comma separated format such as 'premam,theri,sura,puli,kathi' the query is:'${searchInput}'` }],
+        //     model: "gpt-3.5-turbo",
+        // });
+    
+        // console.log(completion.choices[0]);
     }
 
     return (
