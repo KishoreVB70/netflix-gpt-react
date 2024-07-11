@@ -49,9 +49,9 @@ const Header = () => {
           <option value="hn">Hindi</option>
         </select>
         <img className='h-[85%]' src={user.photoURL} alt="user-icon object-cover" />
-        <h1 className='text-black text-xl font-semibold' >{user.displayName}</h1>
-        <button onClick={() => {dispatch(togglePage())}} className=' txt-center w-24 h-1/2 p-2 text-black mx-2 border-purple-700 border' >{isGptPage?"Go Home":"Go to GPT"}</button>
-        <button onClick={handleSignOut} className=' txt-center w-24 h-1/2 p-2 text-black border-purple-700 border ' >Sign Out</button>
+        <h1 className='text-white text-xl font-semibold' >{user.displayName}</h1>
+        <button onClick={() => {dispatch(togglePage())}} className=' txt-center w-24 h-1/2 p-2 text-white mx-2 border-red-600 hover:bg-red-600 border' >{isGptPage?"Go Home":"Go to GPT"}</button>
+        <button onClick={handleSignOut} className=' txt-center w-24 h-1/2 p-2 text-white border-white border ' >Sign Out</button>
       </div>
     </div>
   )
