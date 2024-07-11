@@ -6,6 +6,7 @@ import { auth } from '../utils/firebase'
 import { useNavigate } from 'react-router-dom'
 import { neflixUserIconURL, netflixLogoURL } from '../utils/constants'
 import { togglePage } from '../redux/pageToggle'
+import { changeLang } from '../redux/config'
 
 const Header = () => {
   const user = useSelector(s => s.user);
@@ -23,7 +24,7 @@ const Header = () => {
   }
  
   const changeLanguage = (e)=> {
-    console.log(e.target.value);
+    dispatch(changeLang(e.target.value));
   }
 
   useEffect(() => {
