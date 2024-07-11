@@ -11,7 +11,6 @@ const MovieTrailer = () => {
     }
 
     const {overview, original_title} = movies[trailerNumber];
-    
     const loop = `&loop=1&playlist=${trailerId}`;
 
     return (
@@ -25,7 +24,7 @@ const MovieTrailer = () => {
                 <iframe 
                     className='absolute w-full h-full top-0 left-0 -z-10'
                     style={{ transform: 'scale(1.4)' }}
-                    src={`https://www.youtube.com/embed/${trailerId}?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&modestbranding=1&playsinline=1`} 
+                    src={`https://www.youtube.com/embed/${trailerId}?autoplay=0&mute=1&controls=0&rel=0&showinfo=0&modestbranding=1&playsinline=1`} 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
                 </iframe>
