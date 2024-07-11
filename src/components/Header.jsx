@@ -21,6 +21,10 @@ const Header = () => {
       console.log(error);
     });
   }
+ 
+  const changeLanguage = (e)=> {
+    console.log(e.target.value);
+  }
 
   useEffect(() => {
     if (!user) {
@@ -38,6 +42,11 @@ const Header = () => {
         <img className='h-full w-1/2  transform scale-150 ' src={netflixLogoURL} alt="netflix-logo" />
       </div>
       <div className='flex flex-row w-2/6 h-full items-center mr-8 justify-end' >
+        <select className='w-24 border border-black hover:cursor-pointer p-2' onChange={changeLanguage}>
+          <option value="en">English</option>
+          <option value="tn">Tamil</option>
+          <option value="hn">Hindi</option>
+        </select>
         <img className='h-[85%]' src={user.photoURL} alt="user-icon object-cover" />
         <h1 className='text-black text-xl font-semibold' >{user.displayName}</h1>
         <button onClick={() => {dispatch(togglePage())}} className=' txt-center w-24 h-1/2 p-2 text-black mx-2 border-purple-700 border' >{isGptPage?"Go Home":"Go to GPT"}</button>
