@@ -9,6 +9,7 @@ import { togglePage } from '../redux/pageToggle'
 
 const Header = () => {
   const user = useSelector(s => s.user);
+  const isGptPage = useSelector(s => s.pageToggle.isGptPage);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -36,11 +37,11 @@ const Header = () => {
       <div className='ml-10 h-full w-1/6' >
         <img className='h-full w-1/2  transform scale-150 ' src={netflixLogoURL} alt="netflix-logo" />
       </div>
-      <div className='flex flex-row w-1/6 h-full items-center' >
+      <div className='flex flex-row w-2/6 h-full items-center mr-8 justify-end' >
         <img className='h-[85%]' src={user.photoURL} alt="user-icon object-cover" />
-        <h1 className='text-white text-xl font-semibold' >{user.displayName}</h1>
-        <button onClick={handleSignOut} className=' txt-center w-24 h-1/2 p-2 m-2 text-white border-white border' >Sign Out</button>
-        <button onClick={() => {dispatch(togglePage())}} className=' txt-center w-24 h-1/2 p-2 m-2 text-black border-white border' >Go to GPT</button>
+        <h1 className='text-black text-xl font-semibold' >{user.displayName}</h1>
+        <button onClick={() => {dispatch(togglePage())}} className=' txt-center w-24 h-1/2 p-2 text-black mx-2 border-purple-700 border' >{isGptPage?"Go Home":"Go to GPT"}</button>
+        <button onClick={handleSignOut} className=' txt-center w-24 h-1/2 p-2 text-black border-purple-700 border ' >Sign Out</button>
       </div>
     </div>
   )

@@ -26,10 +26,8 @@ const useGetStreamingMovies = () => {
   
           const trailer = !trailers.length?data.results[trailerNumber]:trailers[trailerNumber];
           console.log(trailer);
-
-          if(trailer) {
-            dispatch(addTrailerMovie(trailer.key));
-          }
+          
+          dispatch(addTrailerMovie(trailer.key));
           
         }catch(error){
           console.log(error);
