@@ -7,7 +7,7 @@ import GPTPage from './GPTPage'
 const Browse = () => {
     const gptPageToggle = useSelector(s => s.pageToggle.isGptPage);
     return (
-        <div>
+        <div className='w-full h-full'>
             <Header /> 
             {gptPageToggle
                 ?<GPTPage />
