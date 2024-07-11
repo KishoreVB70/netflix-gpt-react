@@ -5,7 +5,7 @@ const pageToggle = createSlice({
     initialState: false,
     reducers: {
         togglePage: (state) => {
-            state = !state
+            state = true
         }
     }
 })
