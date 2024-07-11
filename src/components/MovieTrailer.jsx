@@ -14,7 +14,7 @@ const MovieTrailer = () => {
     const loop = `&loop=1&playlist=${trailerId}`;
 
     return (
-        <div className='' >
+        <div >
             <div className='absolute top-48 left-24 text-white w-4/12' >
                 <h1>{original_title}</h1>
                 <h1>{overview}</h1>

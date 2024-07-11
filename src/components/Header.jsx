@@ -39,6 +39,7 @@ const Header = () => {
         <img className='h-[85%]' src={user.photoURL} alt="user-icon object-cover" />
         <h1 className='text-white text-xl font-semibold' >{user.displayName}</h1>
         <button onClick={handleSignOut} className=' txt-center w-24 h-1/2 p-2 m-2 text-white border-white border' >Sign Out</button>
+        <button onClick={() => {navigate("/gpt")}} className=' txt-center w-24 h-1/2 p-2 m-2 text-black border-white border' >Go to GPT</button>
       </div>
     </div>
   )

@@ -3,7 +3,9 @@ import MovieList from './MovieList'
 
 const MoviesComponent = () => {
     return (
-        <div className='w-full bg-gray-100' > 
+        <div className=' bg-gray-100' > 
+            <MovieList />
+            <MovieList />
             <MovieList />
         </div>
     )

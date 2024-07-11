@@ -11,7 +11,8 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 // lazy loading
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense} from 'react';
+import Browse from './components/Browse.jsx';
 
 function App() {
   return (
@@ -36,12 +37,11 @@ export const browserRouter = createBrowserRouter([
       },
       {
         path: "/browse",
-        element: <> <Header /> <Body /> </>
+        element: <Browse />
       },
       {
         path: "/demo",
         element: <Suspense fallback={<Body />} ><DemoComponent /></Suspense>
-        
       }
     ]
   },
