@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const pageToggle = createSlice({
     name: "pageToggle",
-    initialState: false,
+    initialState: {
+        isGptPage: false
+    },
     reducers: {
         togglePage: (state) => {
-            state = true
+            state.isGptPage = !state.isGptPage
         }
     }
 })

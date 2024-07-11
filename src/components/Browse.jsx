@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import GPTPage from './GPTPage'
 
 const Browse = () => {
-    const gptPageToggle = useSelector(s => s.pageToggle);
+    const gptPageToggle = useSelector(s => s.pageToggle.isGptPage);
     return (
         <div>
             <Header /> 
