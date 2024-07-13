@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { trailerNumber } from '../utils/constants';
+import { netflixLoginBackgroundImageURL, trailerNumber } from '../utils/constants';
 
 const MovieTrailer = () => {
     const trailerId = useSelector(s => s.movies.trailerMovieId);
@@ -34,6 +34,7 @@ const MovieTrailer = () => {
         )
         :(
             <div className='absolute w-screen h-screen inset-0 -z-10 overflow-hidden bg-black'>
+                <img className='w-full h-full' src={netflixLoginBackgroundImageURL} alt="netflix-background-image" />
             </div>
         )
 

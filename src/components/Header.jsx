@@ -40,17 +40,19 @@ const Header = () => {
   return (
     <div className=' flex flex-row w-screen h-[10%] bg-transparent items-center mb-2 p-2 justify-between '>
       <div className='ml-10 h-full w-1/6' >
-        <img className='h-full w-1/2  transform scale-150 ' src={netflixLogoURL} alt="netflix-logo" />
+        <img className='h-full w-1/2 transform scale-150 ' src={netflixLogoURL} alt="netflix-logo" />
       </div>
       <div className='flex flex-row w-2/6 h-full items-center mr-8 justify-end' >
+      {isGptPage &&
         <select className=' bg-transparent w-24 border border-white text-white hover:cursor-pointer p-2' onChange={changeLanguage}>
           <option className='text-black ' value="en">English</option>
           <option className='text-black ' value="tn">Tamil</option>
           <option className='text-black ' value="hn">Hindi</option>
         </select>
+      }
         <img className='h-[85%]' src={user.photoURL} alt="user-icon object-cover" />
         <h1 className='text-white text-xl font-semibold' >{user.displayName}</h1>
-        <button onClick={() => {dispatch(togglePage())}} className='transition-colors duration-200 ease-in text-md flex justify-center items-center txt-center w-24 h-1/2 p-2 text-white mx-2 border-red-600 hover:bg-red-600 border' >{isGptPage?"Go Home":"Go to GPT"}</button>
+        <button onClick={() => {dispatch(togglePage())}} className='transition duration-300 ease-in-out hover:rounded-xl text-md flex justify-center items-center txt-center w-24 h-1/2 p-2 text-white mx-2 border-red-600 hover:bg-red-600 border' >{isGptPage?"Go Home":"Go to GPT"}</button>
         <button onClick={handleSignOut} className='text-md flex justify-center items-center txt-center w-24 h-1/2 p-2 text-white border-white border ' >Sign Out</button>
       </div>
     </div>
