@@ -15,3 +15,10 @@ export const tmdbOptions = {
 export const tmdbNowStreamingApi = "https://api.themoviedb.org/3/movie/now_playing?page=1"
 export const tmdbVideosApi = 'https://api.themoviedb.org/3/movie/';
 export const trailerNumber = 0;
+
+export const allMoviesApi = [
+  // {name: "upcoming", api: "https://api.themoviedb.org/3/movie/upcoming?page=1"},
+  {name: "now_streaming", api: "https://api.themoviedb.org/3/movie/now_playing?page=1"},
+  {name: "top_rated", api: "https://api.themoviedb.org/3/movie/top_rated?page=1"},
+  // {name: "popular", api: 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1'},
+]

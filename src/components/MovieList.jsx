@@ -1,15 +1,12 @@
 import React from 'react'
 import MovieCard from './MovieCard'
 
-const MovieList = () => {
+const MovieList = ({movies, title}) => {
   return (
     <div className='flex flex-col justify-start m-2' >
-        <h1>Genre</h1>
-        <div className='flex flex-row overflow-x-scroll overflow-hidden' >
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
+        <h1>{title}</h1>
+        <div className='flex flex-row overflow-x-scroll' >
+          {movies.map(i => <MovieCard key={i.id} movie={i} />)}
         </div>
     </div>
   )

@@ -38,7 +38,7 @@ const Header = () => {
   }
 
   return (
-    <div className='md:bg-red-100 flex flex-row w-screen h-[10%] bg-transparent items-center mb-2 p-2 justify-between '>
+    <div className=' flex flex-row w-screen h-[10%] bg-transparent items-center mb-2 p-2 justify-between '>
       <div className='ml-10 h-full w-1/6' >
         <img className='h-full w-1/2  transform scale-150 ' src={netflixLogoURL} alt="netflix-logo" />
       </div>
@@ -50,8 +50,8 @@ const Header = () => {
         </select>
         <img className='h-[85%]' src={user.photoURL} alt="user-icon object-cover" />
         <h1 className='text-white text-xl font-semibold' >{user.displayName}</h1>
-        <button onClick={() => {dispatch(togglePage())}} className=' txt-center w-24 h-1/2 p-2 text-white mx-2 border-red-600 hover:bg-red-600 border' >{isGptPage?"Go Home":"Go to GPT"}</button>
-        <button onClick={handleSignOut} className=' txt-center w-24 h-1/2 p-2 text-white border-white border ' >Sign Out</button>
+        <button onClick={() => {dispatch(togglePage())}} className='text-md flex justify-center items-center txt-center w-24 h-1/2 p-2 text-white mx-2 border-red-600 hover:bg-red-600 border' >{isGptPage?"Go Home":"Go to GPT"}</button>
+        <button onClick={handleSignOut} className='text-md flex justify-center items-center txt-center w-24 h-1/2 p-2 text-white border-white border ' >Sign Out</button>
       </div>
     </div>
   )

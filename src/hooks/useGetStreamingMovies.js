@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-import { tmdbNowStreamingApi, tmdbOptions, tmdbVideosApi, trailerNumber} from '../utils/constants';
+import { allMoviesApi, tmdbNowStreamingApi, tmdbOptions, tmdbVideosApi, trailerNumber} from '../utils/constants';
 import { useDispatch, useSelector} from 'react-redux';
-import { addMovies, addTrailerMovie } from '../redux/movies';
+import { addAllMoviesList, addMovies, addTrailerMovie } from '../redux/movies';
 
 const useGetStreamingMovies = () => {
     const dispatch = useDispatch();
@@ -44,9 +44,30 @@ const useGetStreamingMovies = () => {
         console.log(error);
       }
     }
+
+    const fetchMoviesList = async() => {
+      if(!user) {
+        return
+      }
+      const moviePromises = allMoviesApi.map(ele => fetch(ele.api, tmdbOptions));
+      const responses = await Promise.all(moviePromises);
+
+      const jsonPromises = responses.map(r => r.json())
+      const data = await Promise.all(jsonPromises);
+
+      const allMoviesList = data.map((data, index) => ({
+        name: allMoviesApi[index].name,
+        movies: data.results
+      }));
+
+      console.log(allMoviesList);
+      dispatch(addAllMoviesList(allMoviesList))
+
+    }
     
     useEffect(() => {
-      fetchStreamingMovies()
+      fetchStreamingMovies();
+      fetchMoviesList();
     },[])
 }
 
