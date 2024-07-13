@@ -49,19 +49,23 @@ const useGetStreamingMovies = () => {
       if(!user) {
         return
       }
-      const moviePromises = allMoviesApi.map(ele => fetch(ele.api, tmdbOptions));
-      const responses = await Promise.all(moviePromises);
-
-      const jsonPromises = responses.map(r => r.json())
-      const data = await Promise.all(jsonPromises);
-
-      const allMoviesList = data.map((data, index) => ({
-        name: allMoviesApi[index].name,
-        movies: data.results
-      }));
-
-      console.log(allMoviesList);
-      dispatch(addAllMoviesList(allMoviesList))
+      try {
+        const moviePromises = allMoviesApi.map(ele => fetch(ele.api, tmdbOptions));
+        const responses = await Promise.all(moviePromises);
+  
+        const jsonPromises = responses.map(r => r.json())
+        const data = await Promise.all(jsonPromises);
+  
+        const allMoviesList = data.map((data, index) => ({
+          name: allMoviesApi[index].name,
+          movies: data.results
+        }));
+  
+        console.log(allMoviesList);
+        dispatch(addAllMoviesList(allMoviesList))
+      }catch(error) {
+        console.log(error);
+      }
 
     }
     

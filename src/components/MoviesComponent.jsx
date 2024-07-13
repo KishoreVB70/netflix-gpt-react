@@ -9,7 +9,7 @@ const MoviesComponent = () => {
         console.log(allMoviesList)
     }
     return (
-        <div className='absolute bg-transparent  top-[80%] w-screen' > 
+        <div className='absolute z-50 top-[80%] bg-transparent' > 
             {allMoviesList && allMoviesList.map(i => <MovieList key={i.name} title={i.name} movies={i.movies} />)}
         </div>
     )
