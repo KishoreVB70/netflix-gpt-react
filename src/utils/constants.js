@@ -14,6 +14,7 @@ export const tmdbOptions = {
 
 export const tmdbNowStreamingApi = "https://api.themoviedb.org/3/movie/now_playing?page=1"
 export const tmdbVideosApi = 'https://api.themoviedb.org/3/movie/';
+export const tmdbMovieSearchAPI= 'https://api.themoviedb.org/3/search/movie?query='
 export const trailerNumber = 0;
 
 export const allMoviesApi = [
