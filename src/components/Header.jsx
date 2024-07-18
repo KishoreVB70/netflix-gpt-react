@@ -4,7 +4,7 @@ import { removeUser } from '../redux/user'
 import { signOut } from 'firebase/auth'
 import { auth } from '../utils/firebase'
 import { useNavigate } from 'react-router-dom'
-import { neflixUserIconURL, netflixLogoURL } from '../utils/constants'
+import { netflixLogoURL } from '../utils/constants'
 import { togglePage } from '../redux/pageToggle'
 import { changeLang } from '../redux/config'
 
@@ -31,7 +31,7 @@ const Header = () => {
     if (!user) {
       navigate("/");
     }
-  },[])
+  },[user])
 
   if(!user) {
     return

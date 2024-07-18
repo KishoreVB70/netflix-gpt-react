@@ -6,7 +6,7 @@ import OpenAI from "openai";
 const GPTSearch = () => {
     const GPTSearchInput = useRef(null);
     const language = useSelector(s => s.config.lang);
-    const REACT_APP_OPEN_AI_API_KEY = process.env.REACT_APP_OPEN_AI_API_KEY_NEW;
+    const REACT_APP_OPEN_AI_API_KEY = process.env.REACT_APP_OPEN_AI_API_KEY;
 
     const openai = new OpenAI({apiKey: REACT_APP_OPEN_AI_API_KEY,
           dangerouslyAllowBrowser: true        });
@@ -20,7 +20,8 @@ const GPTSearch = () => {
                 messages: [{ role: "user", content: `For the query, provide 5 apt movie recommendation in comma separated format such as 'premam,theri,sura,puli,kathi' the query is:'${searchInput}'` }],
                 model: "gpt-3.5-turbo",
             });
-        
+
+            console.log(completion);
             console.log(completion.choices[0]);
         }catch(error) {
             console.log(error);
