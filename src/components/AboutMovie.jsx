@@ -47,7 +47,12 @@ const AboutMovie = () => {
 
   return (
     <>
-    {!movieDetails && <img className='absolute w-full h-full' src={netflixLoginBackgroundImageURL} alt="netflix-background-image" />}
+    {!movieDetails && 
+      <>
+      <div className='absolute inset-0 bg-black h-screen w-screen z-50 opacity-40' ></div>
+      <img className='absolute inset-0 w-screen h-screen -z-50' src={netflixLoginBackgroundImageURL} alt="netflix-background-image" />
+      </>
+    }
     {movieDetails &&
     (
       <div className='h-[85%] w-full flex flex-row justify-between text-white pl-10'>
