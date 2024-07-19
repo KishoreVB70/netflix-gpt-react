@@ -33,7 +33,7 @@ const Header = () => {
         return "Go to GPT"
       }
     } else {
-      return "Go Home"
+      return "Go Back"
     }
   }
 
