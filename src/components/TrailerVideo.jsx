@@ -13,7 +13,7 @@ const TrailerVideo = ({title, trailerId}) => {
           className='absolute w-full h-[55vh] md:h-full inset-0 -z-50'
           style={{ transform: 'scale(1.4)' }}
           onLoad={() => setVideoLoaded(true)}
-          src={`https://www.youtube.com/embed/${trailerId}?autoplay=0&mute=1&controls=0&rel=0&showinfo=0&modestbranding=1&playsinline=1`} 
+          src={`https://www.youtube.com/embed/${trailerId}?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&modestbranding=1&playsinline=1`} 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
           referrerPolicy="strict-origin-when-cross-origin" allowFullScreen>
       </iframe>

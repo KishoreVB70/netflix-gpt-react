@@ -14,9 +14,9 @@ const MovieTrailer = () => {
          ?
          (   
             <>
-                <div className='absolute top-48 left-24 text-white w-4/12' >
+                <div className='absolute top-[32%] md:top-48 left-3 md:left-24 text-white md:w-4/12' >
                     <h1 className='text-3xl font-bold mb-4'>{title}</h1>
-                    <h1 className='text-lg'>{overview}</h1>
+                    <h1 className='text-md md:text-lg'>{overview}</h1>
                 </div>
                 <TrailerVideo title={title} trailerId={trailerId}/>
             </>         
