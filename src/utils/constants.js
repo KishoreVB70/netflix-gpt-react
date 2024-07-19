@@ -4,18 +4,15 @@ export const neflixUserIconURL = "https://www.iconpacks.net/icons/5/free-icon-ga
 
 export const netflixLogoURL = "https://images.ctfassets.net/y2ske730sjqp/6bhPChRFLRxc17sR8jgKbe/6fa1c6e6f37acdc97ff635cf16ba6fb3/Logos-Readability-Netflix-logo.png"
 
-export const tmdbOptions = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZGI0NjI5ZDk2Njg3OTNlMWMxNDViZjEwMmIwMDM4NSIsIm5iZiI6MTcyMDUzNzk0MC43NTcwMTgsInN1YiI6IjY2OGQ1MGZhMTA3ODhjYTkxYzE5OGM5NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kpRgHQb6V_onvFkYXdxwSU4zFt-kAskB1MHqcEu0_cA'
-    }
-  };
+// tmdb
+export const trailerNumber = 0;
+
 
 export const tmdbNowStreamingApi = "https://api.themoviedb.org/3/movie/now_playing?page=1"
 export const tmdbVideosApi = 'https://api.themoviedb.org/3/movie/';
 export const tmdbMovieSearchAPI= 'https://api.themoviedb.org/3/search/movie?query='
-export const trailerNumber = 0;
+export const tmdbMovieDetailsAPI = 'https://api.themoviedb.org/3/movie/'
+
 
 export const allMoviesApi = [
   // {name: "upcoming", api: "https://api.themoviedb.org/3/movie/upcoming?page=1"},
@@ -23,3 +20,11 @@ export const allMoviesApi = [
   {name: "top_rated", api: "https://api.themoviedb.org/3/movie/top_rated?page=1"},
   // {name: "popular", api: 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1'},
 ]
+
+export const tmdbOptions = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZGI0NjI5ZDk2Njg3OTNlMWMxNDViZjEwMmIwMDM4NSIsIm5iZiI6MTcyMDUzNzk0MC43NTcwMTgsInN1YiI6IjY2OGQ1MGZhMTA3ODhjYTkxYzE5OGM5NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kpRgHQb6V_onvFkYXdxwSU4zFt-kAskB1MHqcEu0_cA'
+  }
+};

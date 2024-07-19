@@ -37,9 +37,7 @@ const MovieTrailer = () => {
             <div className='absolute w-screen h-screen inset-0 -z-10 overflow-hidden bg-black'>
                 <img className='w-full h-full' src={netflixLoginBackgroundImageURL} alt="netflix-background-image" />
             </div>
-        )
-
-        
+        )        
     }
 
         </div>
