@@ -114,7 +114,7 @@ const Login = () => {
         </div>
 
         <div className='absolute h-screen w-screen flex justify-center items-center' >
-          <div className='relative flex flex-col w-[22%] h-[78%]'>
+          <div className='relative flex flex-col md:w-[22%] md:h-[78%]'>
             <div className='absolute w-full h-full opacity-70 bg-black' >
             </div>
 
