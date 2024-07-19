@@ -21,10 +21,7 @@ const MovieTrailer = () => {
                     <h1 className='text-3xl font-bold mb-4'>{title}</h1>
                     <h1 className='text-lg'>{overview}</h1>
                 </div>
-                <div className='absolute w-screen h-screen inset-0 -z-10 overflow-hidden'>
-                    <div className='absolute w-screen h-screen inset-0 bg-black z-0 opacity-30' ></div>
-                    <TrailerVideo title={title} trailerId={trailerId}/>
-                </div>
+                <TrailerVideo title={title} trailerId={trailerId}/>
             </>         
         )
         :(
