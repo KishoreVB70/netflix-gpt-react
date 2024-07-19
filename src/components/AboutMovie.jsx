@@ -46,7 +46,10 @@ const AboutMovie = () => {
 
 
   return (
-    movieDetails && (
+    <>
+    {!movieDetails && <img className='absolute w-full h-full' src={netflixLoginBackgroundImageURL} alt="netflix-background-image" />}
+    {movieDetails &&
+    (
       <div className='h-[85%] w-full flex flex-row justify-between text-white pl-10'>
         {movieTrailer
           ?
@@ -68,10 +71,11 @@ const AboutMovie = () => {
           <p className='text-lg' >Release: {movieDetails.release_date}</p>
           <p className='text-lg'>Rating: {(movieDetails.vote_average).toFixed(1)}/10</p>
         </div>
-  
-    </div>
-
+      </div>
     )
+    }
+    </>
+
   )
 }
 
