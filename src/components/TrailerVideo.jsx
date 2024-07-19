@@ -10,7 +10,7 @@ const TrailerVideo = ({title, trailerId}) => {
       {!videoLoaded && <img className='absolute w-full h-full -z-40' src={netflixLoginBackgroundImageURL} alt="netflix-background-image" />}
       <iframe 
           title={title} 
-          className='absolute w-full h-full top-0 left-0 -z-50'
+          className='absolute w-full h-[55vh] md:h-full inset-0 -z-50'
           style={{ transform: 'scale(1.4)' }}
           onLoad={() => setVideoLoaded(true)}
           src={`https://www.youtube.com/embed/${trailerId}?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&modestbranding=1&playsinline=1`} 

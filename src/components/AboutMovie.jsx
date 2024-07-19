@@ -69,7 +69,7 @@ const AboutMovie = () => {
             )        
         }
         <div className='flex flex-col w-[40%] mt-20 opacity-80'>
-          <img className='hover:cursor-pointer hover:scale-105 w-[30%] transition aspect-auto ' src={`${tmdbPosterBaseUrl}${movieDetails.poster_path}`}alt="movie-poster" />
+          <img className='hover:cursor-pointer hover:scale-105 md:w-[30%] w-[40%] transition aspect-auto ' src={`${tmdbPosterBaseUrl}${movieDetails.poster_path}`}alt="movie-poster" />
           <p className='text-lg mt-10'>{movieDetails.overview}</p>
         </div>
         <div className='flex flex-col w-[15%] items-start mt-20 opacity-80'>
