@@ -58,7 +58,7 @@ const useGetStreamingMovies = () => {
   
         const allMoviesList = data.map((data, index) => ({
           name: allMoviesApi[index].name,
-          movies: data.results
+          movies: data.results.slice(0,18)
         }));
   
         console.log(allMoviesList);

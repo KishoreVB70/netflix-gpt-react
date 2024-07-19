@@ -57,9 +57,9 @@ const GPTSearch = () => {
     }
 
     return (
-        <div className=' w-1/2 h-[50%] flex flex-row items-center justify-center mt-20 mb-28'>
-            <input ref={GPTSearchInput} className='text-xl h-full w-11/12 p-2 pl-4 border border-black' placeholder={lang[language].searchPlaceHolder} type="text" />
-            <button onClick={handleGPTSearch} className='h-4/4 bg-blue-600 w-1/4 border-y border-r text-white border-black text-xl' > {lang[language].search} </button>
+        <div className='h-[5vh] w-[50%] flex flex-row mt-20 mb-20 '>
+            <input ref={GPTSearchInput} className='text-xl w-10/12 p-2 pl-4 border border-black' placeholder={lang[language].searchPlaceHolder} type="text" />
+            <button onClick={handleGPTSearch} className='h-full w-2/12 bg-red-600 border-y border-r text-white border-black text-xl' > {lang[language].search} </button>
         </div>
     )   
 }

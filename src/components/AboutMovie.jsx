@@ -68,11 +68,11 @@ const AboutMovie = () => {
               </div>
             )        
         }
-        <div className='flex flex-col w-[40%] mt-20'>
+        <div className='flex flex-col w-[40%] mt-20 opacity-80'>
           <img className='hover:cursor-pointer hover:scale-105 w-[30%] transition aspect-auto ' src={`${tmdbPosterBaseUrl}${movieDetails.poster_path}`}alt="movie-poster" />
           <p className='text-lg mt-10'>{movieDetails.overview}</p>
         </div>
-        <div className='flex flex-col w-[15%] items-start mt-20'>
+        <div className='flex flex-col w-[15%] items-start mt-20 opacity-80'>
           <h1 className='text-white text-3xl w-[80%] font-bold mb-5'>{movieDetails.title}</h1>
           <p className='text-lg' >Release: {movieDetails.release_date}</p>
           <p className='text-lg'>Rating: {(movieDetails.vote_average).toFixed(1)}/10</p>
