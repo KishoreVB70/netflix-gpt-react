@@ -55,7 +55,7 @@ const AboutMovie = () => {
     }
     {movieDetails &&
     (
-      <div className='h-[85%] w-full flex flex-row justify-between text-white pl-10'>
+      <div className='h-[85%] w-full flex flex-col md:flex-row md:justify-between text-white p-2 md:pl-10'>
         {movieTrailer
           ?
             (   
@@ -68,11 +68,11 @@ const AboutMovie = () => {
               </div>
             )        
         }
-        <div className='flex flex-col w-[40%] mt-20 opacity-80'>
-          <img className='hover:cursor-pointer hover:scale-105 md:w-[30%] w-[40%] transition aspect-auto ' src={`${tmdbPosterBaseUrl}${movieDetails.poster_path}`}alt="movie-poster" />
-          <p className='text-lg mt-10'>{movieDetails.overview}</p>
+        <div className='flex flex-row items-center md:items-start md:flex-col md:w-[40%] mt-64 md:mt-20 md:opacity-80'>
+          <img className='hover:cursor-pointer hover:scale-105 md:w-[30%] w-[40%] transition aspect-auto' src={`${tmdbPosterBaseUrl}${movieDetails.poster_path}`}alt="movie-poster" />
+          <p className='text-lg md:mt-10 md:ml-0 ml-3'>{movieDetails.overview}</p>
         </div>
-        <div className='flex flex-col w-[15%] items-start mt-20 opacity-80'>
+        <div className='flex flex-col md:w-[15%] items-start mt-5 md:mt-20 opacity-80'>
           <h1 className='text-white text-3xl w-[80%] font-bold mb-5'>{movieDetails.title}</h1>
           <p className='text-lg' >Release: {movieDetails.release_date}</p>
           <p className='text-lg'>Rating: {(movieDetails.vote_average).toFixed(1)}/10</p>
