@@ -12,6 +12,7 @@ export const tmdbNowStreamingApi = "https://api.themoviedb.org/3/movie/now_playi
 export const tmdbVideosApi = 'https://api.themoviedb.org/3/movie/';
 export const tmdbMovieSearchAPI= 'https://api.themoviedb.org/3/search/movie?query='
 export const tmdbMovieDetailsAPI = 'https://api.themoviedb.org/3/movie/'
+export const tmdbPosterBaseUrl ="https://image.tmdb.org/t/p/original/"
 
 
 export const allMoviesApi = [

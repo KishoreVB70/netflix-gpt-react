@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { removeUser } from '../redux/user'
 import { signOut } from 'firebase/auth'
 import { auth } from '../utils/firebase'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation, Link } from 'react-router-dom'
 import { netflixLogoURL } from '../utils/constants'
 import { togglePage } from '../redux/pageToggle'
 import { changeLang } from '../redux/config'
@@ -65,7 +65,9 @@ const Header = () => {
   return (
     <div className=' flex flex-row w-screen h-[10%] bg-transparent items-center mb-2 p-2 justify-between '>
       <div className='ml-10 h-full w-1/6' >
-        <img className='h-full w-1/2 transform scale-150 ' src={netflixLogoURL} alt="netflix-logo" />
+      <Link to={"/browse"}>
+        <img className='hover:cursor-pointer h-full w-1/2 transform scale-150 ' src={netflixLogoURL} alt="netflix-logo" />
+      </Link>
       </div>
       <div className='flex flex-row w-2/6 h-full items-center mr-8 justify-end' >
       {isGptPage &&

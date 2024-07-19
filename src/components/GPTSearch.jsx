@@ -57,11 +57,11 @@ const GPTSearch = () => {
     }
 
     return (
-        <div className='bg-black w-1/2 h-[12%] flex flex-row items-center justify-center'>
+        <div className=' w-1/2 h-[50%] flex flex-row items-center justify-center mt-20 mb-28'>
             <input ref={GPTSearchInput} className='text-xl h-full w-11/12 p-2 pl-4 border border-black' placeholder={lang[language].searchPlaceHolder} type="text" />
-            <button onClick={handleGPTSearch} className='bg-red-600 w-1/4 h-full border-y border-r text-white border-black text-xl' > {lang[language].search} </button>
+            <button onClick={handleGPTSearch} className='h-4/4 bg-blue-600 w-1/4 border-y border-r text-white border-black text-xl' > {lang[language].search} </button>
         </div>
-    )
+    )   
 }
 
 export default GPTSearch

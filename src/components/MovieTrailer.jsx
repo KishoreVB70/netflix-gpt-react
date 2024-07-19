@@ -8,9 +8,6 @@ const MovieTrailer = () => {
     const movies = useSelector(s => s.movies.nowStreaming);
     const {overview, title} = (movies!== null&&movies[trailerNumber]);
 
-
-    // const loop = `&loop=1&playlist=${trailerId}`;
-
     return (
         <div >
         {trailerId

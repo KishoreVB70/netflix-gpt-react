@@ -1,6 +1,7 @@
 import React from 'react'
 
 const TrailerVideo = ({title, trailerId}) => {
+  // const loop = `&loop=1&playlist=${trailerId}`;
   return (
     <div className='absolute w-screen h-screen inset-0 -z-10 overflow-hidden'>
       <div className='absolute w-screen h-screen inset-0 bg-black z-0 opacity-30' ></div>

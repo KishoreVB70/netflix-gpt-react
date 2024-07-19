@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { netflixLoginBackgroundImageURL, tmdbMovieDetailsAPI, tmdbOptions, tmdbVideosApi, trailerNumber } from '../utils/constants'
+import { netflixLoginBackgroundImageURL, tmdbMovieDetailsAPI, tmdbOptions, tmdbPosterBaseUrl, tmdbVideosApi, trailerNumber } from '../utils/constants'
 import { useParams } from 'react-router-dom'
 import TrailerVideo from './TrailerVideo'
 
@@ -14,7 +14,6 @@ const AboutMovie = () => {
     try{
       const _data = await fetch(tmdbVideosApi+ "" +trailerMovieId+"/videos?", tmdbOptions)
       const data = await _data.json();
-      console.log(data.results);
 
       let trailers = data.results.filter(i => i.type==="Trailer" );
 
@@ -48,24 +47,27 @@ const AboutMovie = () => {
 
   return (
     movieDetails && (
-      <div className='h-[85%] w-full flex flex-col text-white'>
+      <div className='h-[85%] w-full flex flex-row justify-between text-white pl-10'>
         {movieTrailer
-           ?
-           (   
-            <TrailerVideo trailerId={movieTrailer.key} title={movieDetails.title} /> 
-          )
-          :(
+          ?
+            (   
+              <TrailerVideo trailerId={movieTrailer.key} title={movieDetails.title} /> 
+            )
+            :(
               <div className='absolute w-screen h-screen inset-0 -z-10 overflow-hidden bg-black'>
                   <img className='w-full h-full' src={netflixLoginBackgroundImageURL} alt="netflix-background-image" />
               </div>
-          )        
+            )        
         }
-        {/* <div className='absolute inset-0 bg-black h-screen w-screen -z-40 opacity-40' ></div>
-        <img className='absolute inset-0 w-screen h-screen -z-50' src={netflixLoginBackgroundImageURL} alt="netflix-background-image" /> */}
-        <h1 className='text-white text-3xl'>Title</h1>
-        <p>Over view</p>
-        <p>Release date</p>
-        <p>Rating</p>
+        <div className='flex flex-col w-[40%] mt-20'>
+          <img className='hover:cursor-pointer hover:scale-105 w-[30%] transition aspect-square ' src={`${tmdbPosterBaseUrl}${movieDetails.poster_path}`}alt="movie-poster" />
+          <p className='text-lg mt-10'>{movieDetails.overview}</p>
+        </div>
+        <div className='flex flex-col w-[20%] items-center mt-20'>
+          <h1 className='text-white text-3xl'>{movieDetails.title}</h1>
+          <p className='text-lg' >Release: {movieDetails.release_date}</p>
+          <p className='text-lg'>Rating: {(movieDetails.vote_average).toFixed(1)}/10</p>
+        </div>
   
     </div>
 
