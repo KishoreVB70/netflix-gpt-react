@@ -6,7 +6,7 @@ const MovieCard = ({movie}) => {
   const [loaded, setLoaded] = useState(false);
   const navigate = useNavigate();
   return (
-    <div className='my-2 mx-2 w-[10vw]'>
+    <div className='my-2 mx-2 w-[27vw] md:w-[10vw]'>
       {!loaded && 
         <div className='w-full h-full bg-gray-100'></div>
       }

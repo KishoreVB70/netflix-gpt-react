@@ -63,7 +63,7 @@ const Header = () => {
   }
 
   return (
-    <div className=' flex flex-row w-screen h-[10%] bg-transparent items-center mb-2 p-2 justify-between '>
+    <div className=' flex flex-row w-screen h-[20%] md:h-[10%] bg-transparent items-center mb-2 p-2 justify-between '>
       <div className='ml-10 h-full w-1/6' >
       <Link to={"/browse"}>
         <img className='hover:cursor-pointer h-full w-1/2 transform scale-150 ' src={netflixLogoURL} alt="netflix-logo" />
