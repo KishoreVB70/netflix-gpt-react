@@ -46,7 +46,7 @@ export const browserRouter = createBrowserRouter([
             element: <BrowseBody />
           },
           {
-            path:"/browse/movie",
+            path:"/browse/movie/:id",
             element: <AboutMovie />,
           }
         ]

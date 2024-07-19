@@ -17,8 +17,8 @@ const MovieTrailer = () => {
          (   
             <>
                 <div className='absolute top-48 left-24 text-white w-4/12' >
-                    <h1>{original_title}</h1>
-                    <h1>{overview}</h1>
+                    <h1 className='text-3xl font-bold mb-4'>{original_title}</h1>
+                    <h1 className='text-lg'>{overview}</h1>
                 </div>
                 <div className='absolute w-screen h-screen inset-0 -z-10 overflow-hidden'>
                     <div className='absolute w-screen h-screen inset-0 bg-black z-0 opacity-30' ></div>
