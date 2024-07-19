@@ -6,9 +6,6 @@ import { useSelector } from 'react-redux'
 
 const MoviesComponent = () => {
     const allMoviesList = useSelector(s => s.movies.allMoviesList)
-    if(allMoviesList) {
-        console.log(allMoviesList)
-    }
     return (
         <div className='absolute z-50 top-[80%] bg-transparent' > 
             {allMoviesList

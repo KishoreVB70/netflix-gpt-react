@@ -49,7 +49,7 @@ const AboutMovie = () => {
     <>
     {!movieDetails && 
       <>
-      <div className='absolute inset-0 bg-black h-screen w-screen z-50 opacity-40' ></div>
+      <div className='absolute inset-0 bg-black h-screen w-screen -z-10 opacity-40' ></div>
       <img className='absolute inset-0 w-screen h-screen -z-50' src={netflixLoginBackgroundImageURL} alt="netflix-background-image" />
       </>
     }
@@ -62,13 +62,14 @@ const AboutMovie = () => {
               <TrailerVideo trailerId={movieTrailer.key} title={movieDetails.title} /> 
             )
             :(
-              <div className='absolute w-screen h-screen inset-0 -z-10 overflow-hidden bg-black'>
-                  <img className='w-full h-full' src={netflixLoginBackgroundImageURL} alt="netflix-background-image" />
+              <div className='absolute w-screen h-screen inset-0 -z-10'>
+                  <div className='absolute inset-0 bg-black h-screen w-screen -z-10 opacity-40' ></div>
+                  <img className='absolute inset-0 w-full h-full -z-50' src={netflixLoginBackgroundImageURL} alt="netflix-background-image" />
               </div>
             )        
         }
         <div className='flex flex-col w-[40%] mt-20'>
-          <img className='hover:cursor-pointer hover:scale-105 w-[30%] transition aspect-square ' src={`${tmdbPosterBaseUrl}${movieDetails.poster_path}`}alt="movie-poster" />
+          <img className='hover:cursor-pointer hover:scale-105 w-[30%] transition aspect-auto ' src={`${tmdbPosterBaseUrl}${movieDetails.poster_path}`}alt="movie-poster" />
           <p className='text-lg mt-10'>{movieDetails.overview}</p>
         </div>
         <div className='flex flex-col w-[15%] items-start mt-20'>
