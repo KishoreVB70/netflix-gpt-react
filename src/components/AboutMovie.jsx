@@ -22,7 +22,7 @@ const AboutMovie = () => {
       }
 
       const trailer = !trailers.length?data.results[trailerNumber]:trailers[trailerNumber];
-      console.log(trailer);
+      // console.log(trailer);
       
       setMovieTrailer(trailer);
       
