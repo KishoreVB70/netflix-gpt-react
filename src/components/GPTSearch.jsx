@@ -24,7 +24,7 @@ const GPTSearch = () => {
             });
 
             const gptMovieRecommendations = (gptResponse.choices[0].message.content.split(",")).map(i => i.trim());
-            console.log(gptMovieRecommendations);
+            // console.log(gptMovieRecommendations);
 
             // Call the tmdb api
             const promiseArray = gptMovieRecommendations.map(i => fetch(tmdbMovieSearchAPI+i, tmdbOptions));
@@ -40,14 +40,9 @@ const GPTSearch = () => {
             const onlyOneMovie = onlyExactName.map(i => i.slice(0,1));
             const oneDArray = onlyOneMovie.map(i => i[0]);
             
-            // console.log(movieResults);
-            // console.log(onlyExactName);
-            // console.log(onlyOneMovie);
-            // console.log(oneDArray);
-            
             // Remove undefined
             const finalArray = oneDArray.filter(i => i?.poster_path);
-            console.log(finalArray);
+            // console.log(finalArray);
 
             dispatch(addGptMovies(finalArray));
 

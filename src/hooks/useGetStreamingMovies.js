@@ -16,7 +16,7 @@ const useGetStreamingMovies = () => {
         try{
           const _data = await fetch(tmdbVideosApi+ "" +trailerMovieId+"/videos?", tmdbOptions)
           const data = await _data.json();
-          console.log(data.results);
+          // console.log(data.results);
 
           let trailers = data.results.filter(i => i.type==="Trailer" );
   
@@ -25,7 +25,7 @@ const useGetStreamingMovies = () => {
           }
   
           const trailer = !trailers.length?data.results[trailerNumber]:trailers[trailerNumber];
-          console.log(trailer);
+          // console.log(trailer);
           
           dispatch(addTrailerMovie(trailer.key));
           
@@ -37,7 +37,7 @@ const useGetStreamingMovies = () => {
       try {
         const _data = await fetch(tmdbNowStreamingApi, tmdbOptions)
         const data = await _data.json();
-        console.log(data.results);  
+        // console.log(data.results);  
         dispatch(addMovies(data.results));
         fetchTrailerMovieDetails(data.results[0].id);
       }catch (error){
@@ -61,7 +61,7 @@ const useGetStreamingMovies = () => {
           movies: data.results.slice(0,18)
         }));
   
-        console.log(allMoviesList);
+        // console.log(allMoviesList);
         dispatch(addAllMoviesList(allMoviesList))
       }catch(error) {
         console.log(error);

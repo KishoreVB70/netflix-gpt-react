@@ -55,7 +55,7 @@ const Login = () => {
 
           const userObject = {displayName, email, uid, photoURL}
   
-          console.log(userObject);
+          // console.log(userObject);
   
           // Set user into store
           dispatch(setUser(userObject));
