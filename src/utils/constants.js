@@ -7,7 +7,7 @@ export const netflixLogoURL = "https://images.ctfassets.net/y2ske730sjqp/6bhPChR
 
 // firebase
 export const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY_N,
   authDomain: "gpt-netflix-7.firebaseapp.com",
   projectId: "gpt-netflix-7",
   storageBucket: "gpt-netflix-7.appspot.com",
