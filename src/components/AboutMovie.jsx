@@ -75,7 +75,7 @@ const AboutMovie = () => {
         <div className='flex flex-col md:w-[15%] items-start mt-5 md:mt-20 opacity-80'>
           <h1 className='text-white text-3xl w-[80%] font-bold mb-5'>{movieDetails.title}</h1>
           <p className='text-lg' >Release: {movieDetails.release_date}</p>
-          <p className='text-lg'>Rating: {(movieDetails.vote_average).toFixed(1)}/10</p>
+          <p className='text-lg'>Rating: {(movieDetails.vote_average)?.toFixed(1)}/10</p>
         </div>
       </div>
     )
