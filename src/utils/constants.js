@@ -7,13 +7,13 @@ export const netflixLogoURL = "https://images.ctfassets.net/y2ske730sjqp/6bhPChR
 
 // firebase
 export const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY_N,
-  authDomain: "gpt-netflix-7.firebaseapp.com",
-  projectId: "gpt-netflix-7",
-  storageBucket: "gpt-netflix-7.appspot.com",
-  messagingSenderId: "822961500160",
-  appId: "1:822961500160:web:a541f7ca8d4233db0da8e5",
-  measurementId: "G-LDHSN0FDQ4"
+  apiKey: "AIzaSyB5eTMhwbbEkqFvOY62l25sHbDrS8lJNB4",
+  authDomain: "gpt-netflix-3.firebaseapp.com",
+  projectId: "gpt-netflix-3",
+  storageBucket: "gpt-netflix-3.firebasestorage.app",
+  messagingSenderId: "908348793906",
+  appId: "1:908348793906:web:11cb28f49668f17503482b",
+  measurementId: "G-JDZ3VSFNDF"
 };
 // tmdb
 export const trailerNumber = 0;
