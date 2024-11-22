@@ -126,6 +126,10 @@ const Login = () => {
               }
               <input  className={`border h-[3.3 rem] text-white p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Email not valid"?"border-red-500":"border-gray-500"}`} ref={emailValue} placeholder='Email' type="text" />
               <input className={`h-[3.3 rem] border text-white border-gray-500   p-4 m-2 bg-gray-900 bg-opacity-50 ${validationErrorString==="Password not valid"?"border-red-500":"border-gray-500"}`} ref={password} placeholder='password' type="password" />
+              {formState === "Sign Up" && 
+                <p className='text-white ml-5 text-xs'>Atleast 6 characters</p>
+              }
+              
               <p className='text-red-500 ml-2 z-50 font-semibold text-lg' >{validationErrorString}</p>
               <button onClick={handleFormSubmit} className='z-50 rounded-md hover:bg-red-700 text-white bg-red-600 h-10 m-2 font-semibold' >{formState}</button>
             </div>
